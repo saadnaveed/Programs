@@ -1,6 +1,6 @@
 puts "Welcome! Here are currently your options: "
 
-todo_list = Array.new
+todo_list = ["Pray 5 times a day", "Read Quran", "Study Coding"]
 option = nil
 
 while option != 'x' do
@@ -9,6 +9,7 @@ while option != 'x' do
   puts "Type 'd' to delete a todo item by name"
   puts "Type 'd2' to delete a todo item by name"
   puts "Type 'c' to view your current todo list"
+  puts "Type 'm' to modify an existing todo item"
   puts "Type 'x' to exit out of this program completely"
   print "\n> "
   option = gets.chomp.downcase
@@ -47,6 +48,20 @@ while option != 'x' do
     todo_list.each_with_index do |todo, index|
       puts "#{index+1}.) #{todo}"
       puts
+    end
+  elsif option == 'm'
+    puts "Enter the item number you would like to change"
+    print "> "
+    todo_num = gets.chomp.to_i
+    puts "Enter the new name for the item"
+    print "> "
+    new_todo_name = gets.chomp
+
+    if !todo_list[todo_num - 1].nil?
+      todo_list[todo_num - 1] = new_todo_name
+      puts "Successfully modified!"
+    else
+      puts "Error: No todo item exists at that index!"
     end
   elsif option == 'x'
     puts "See ya later!"
